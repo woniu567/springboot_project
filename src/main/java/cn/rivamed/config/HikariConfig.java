@@ -55,6 +55,16 @@ public class HikariConfig {
     public HikariDataSource getHikariDataSource(String url,String userName,String password){
         com.zaxxer.hikari.HikariConfig config = new com.zaxxer.hikari.HikariConfig();
         config.setMinimumIdle(minIdle);
+        config.setMaximumPoolSize(maxActive);
+        config.setConnectionTestQuery(validationQuery);
+        config.setJdbcUrl(url);
+        config.setUsername(userName);
+        config.setPassword(password);
+        config.setConnectionTimeout(connectionTimeout);
+        config.setDriverClassName(driverClassName);
+        config.setMaxLifetime(maxLeftTime);
+        config.setValidationTimeout(validationTimeout);
+        config.setConnectionInitSql(connectionInitSql);
         return new HikariDataSource(config);
     }
 }

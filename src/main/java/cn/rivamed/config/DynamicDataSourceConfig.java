@@ -2,6 +2,7 @@ package cn.rivamed.config;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -46,8 +47,10 @@ public class DynamicDataSourceConfig {
 //        return hikariConfig.getHikariDataSource(userUrl, userName, password);
 //    }
 
-    public DynamicDataSource dynamicDataSource(){
+    @Bean("dynamicDataSource")
+    public DynamicDataSource dynamicDataSource(@Qualifier("primaryDataSource") DataSource primaryDataSource,@Qualifier("userDataSource") DataSource miaoMoreDataSource){
 
+        return null;
     }
 
 }
